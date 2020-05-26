@@ -2,10 +2,6 @@
 The default group of operations that pyunique has
 """
 
-import os  # for walk, getcwd, symlink, listdir, unlink, mkdir
-import os.path  # for join, expanduser, realpath, abspath, islink, isdir, isfile
-import sys
-
 from pytconf.config import register_endpoint, register_function_group
 
 import pyunique

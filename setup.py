@@ -13,8 +13,8 @@ setuptools.setup(
         'pyunique.endpoints',
     ],
     # from here all is optional
-    description='help you get ridd of duplicate files',
-    long_description='help you get ridd of duplicate files',
+    description='help you get rid of duplicate files',
+    long_description='help you get rid of duplicate files',
     author='Mark Veltzer',
     author_email='mark.veltzer@gmail.com',
     maintainer='Mark Veltzer',
