@@ -3,7 +3,7 @@ import setuptools
 setuptools.setup(
     # the first three fields are a must according to the documentation
     name='pyunique',
-    version='0.0.1',
+    version='0.0.2',
     packages=[
         'pyunique',
         'pyunique.endpoints',
