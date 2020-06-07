@@ -23,7 +23,7 @@ setuptools.setup(
     ],
     url="https://veltzer.github.io/pyunique",
     download_url="https://github.com/veltzer/pyunique",
-    license="MIT",
+    # license="MIT",
     platforms=[
         'python3',
     ],
