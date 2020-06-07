@@ -12,5 +12,5 @@ project website: https://veltzer.github.io/pyunique
 
 author: Mark Veltzer
 
-version: 0.0.2
+version: 0.0.3
 
