@@ -57,5 +57,5 @@ setuptools.setup(
     entry_points={"console_scripts": [
         'pyunique=pyunique.endpoints.main:main',
     ]},
-    python_requires=">=3.5",
+    python_requires=">=3.6",
 )
