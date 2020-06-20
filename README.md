@@ -1,5 +1,4 @@
 
-
 # *pyunique* project by Mark Veltzer
 
 ![PyPI - Status](https://img.shields.io/pypi/status/pyunique)
@@ -17,7 +16,7 @@
 ![Downloads](https://pepy.tech/badge/pyunique/month)
 ![Downloads](https://pepy.tech/badge/pyunique/week)
 
+
 help you get rid of duplicate files
 
-project website: https://veltzer.github.io/pyunique
-
+project website: <https://veltzer.github.io/pyunique>
