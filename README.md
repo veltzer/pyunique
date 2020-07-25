@@ -20,3 +20,5 @@
 help you get rid of duplicate files
 
 project website: <https://veltzer.github.io/pyunique>
+
+
