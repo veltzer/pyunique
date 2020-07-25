@@ -2,9 +2,8 @@
 The default group of operations that pyunique has
 """
 
-from pytconf.config import register_endpoint, register_function_group
+from pytconf import register_endpoint, register_function_group
 
-import pyunique
 import pyunique.version
 
 GROUP_NAME_DEFAULT = "default"
