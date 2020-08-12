@@ -56,7 +56,7 @@ def scan() -> None:
         for root, directories, files in os.walk(ConfigScan.folder):
             for file in files:
                 filename = os.path.join(root, file)
-                logger.info(f"doing {filename}")
+                logger.debug(f"doing {filename}")
                 if archive.get_digest(filename=filename) is None:
                     digest = digest_file_bytes(filename=filename)
                     archive.add_digest(filename=filename, digest=digest)
