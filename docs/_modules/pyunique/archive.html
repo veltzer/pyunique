@@ -72,7 +72,7 @@
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="n">filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s2">&quot;~/.config/pyunique.lmdb&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">env</span> <span class="o">=</span> <span class="n">lmdb</span><span class="o">.</span><span class="n">open</span><span class="p">(</span>
-            <span class="n">filename</span><span class="o">=</span><span class="n">filename</span><span class="p">,</span>
+            <span class="n">path</span><span class="o">=</span><span class="n">filename</span><span class="p">,</span>
             <span class="n">subdir</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>  <span class="c1"># default is True</span>
             <span class="n">map_size</span><span class="o">=</span><span class="n">ConfigLMDB</span><span class="o">.</span><span class="n">map_size</span><span class="p">,</span>
             <span class="c1"># lock=True,  # this is the default</span>
