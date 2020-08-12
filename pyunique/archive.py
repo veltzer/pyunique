@@ -38,7 +38,7 @@ class ArchiveLMDB(Archive):
         super().__init__()
         filename = os.path.expanduser("~/.config/pyunique.lmdb")
         self.env = lmdb.open(
-            filename=filename,
+            path=filename,
             subdir=False,  # default is True
             map_size=ConfigLMDB.map_size,
             # lock=True,  # this is the default
