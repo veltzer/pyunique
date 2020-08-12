@@ -105,6 +105,9 @@ def clean_db() -> None:
     ],
 )
 def check_filenames() -> None:
+    """
+    Check filenames in a certain folder
+    """
     logger = get_logger()
     errors = 0
     error_filenames = []
