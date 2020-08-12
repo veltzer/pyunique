@@ -36,6 +36,8 @@ setuptools.setup(
     install_requires=[
         'pytconf',
         'pylogconf',
+        'tqdm',
+        'lmdb',
     ],
     extras_require={
     },

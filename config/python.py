@@ -12,6 +12,8 @@ setup_requires = [
 run_requires = [
     'pytconf',  # for command line parsing
     'pylogconf',  # for logging configuration
+    'tqdm',  # for progress reporting
+    'lmdb',  # for archive
 ]
 
 test_requires = [
