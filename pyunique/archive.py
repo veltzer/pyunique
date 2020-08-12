@@ -57,7 +57,6 @@ class ArchiveLMDB(Archive):
             path=filename,
             map_size=ConfigLMDB.map_size,
             subdir=False,  # default is True, for just one file
-            buffers=True,  # default is False, for performance
             writemap=True,  # default is False, for performance
             # lock=True,  # this is the default
         )
@@ -67,14 +66,19 @@ class ArchiveLMDB(Archive):
         return self.env.stat()["entries"]
 
     def start_read(self) -> None:
-        self.txn = self.env.begin()
+        self.txn = self.env.begin(
+            buffers=True,  # default is False, for performance
+        )
 
     def end_read(self) -> None:
         self.txn.commit()
 
     def start_write(self) -> None:
         # write is False by default
-        self.txn = self.env.begin(write=True)
+        self.txn = self.env.begin(
+            write=True,  # default is False
+            buffers=True,  # default is False, for performance
+        )
 
     def end_write(self) -> None:
         self.txn.commit()
