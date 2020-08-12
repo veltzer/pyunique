@@ -4,7 +4,7 @@ from typing import Union
 
 import lmdb
 
-from pyunique.configs import ConfigLMDB
+from pyunique.configs import ConfigLMDB, ConfigAlgo
 
 
 class Archive(metaclass=ABCMeta):
@@ -88,11 +88,11 @@ class ArchiveLMDB(Archive):
         self.txn.commit()
 
     def get_digest(self, filename: str) -> Union[bytes, None]:
-        return self.txn.get(key=filename.encode(ConfigLMDB.encoding))
+        return self.txn.get(key=filename.encode(ConfigAlgo.encoding))
 
     def add_digest(self, filename: str, digest: bytes) -> None:
         self.txn.put(
-            key=filename.encode(ConfigLMDB.encoding),
+            key=filename.encode(ConfigAlgo.encoding),
             value=digest,
         )
 
@@ -102,10 +102,10 @@ class ArchiveLMDB(Archive):
     def yield_all_items(self):
         with self.txn.cursor() as curs:
             for key, value in curs:
-                yield key.decode(ConfigLMDB.encoding), value
+                yield key.decode(ConfigAlgo.encoding), value
 
     def delete(self, filename: str) -> None:
-        self.txn.delete(key=filename.encode(ConfigLMDB.encoding))
+        self.txn.delete(key=filename.encode(ConfigAlgo.encoding))
 
 
 def get_archive() -> Archive:
