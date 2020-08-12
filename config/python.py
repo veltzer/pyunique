@@ -25,6 +25,7 @@ dev_requires = [
     'pypitools',  # for upload etc
     'pydmt',  # for building
     'Sphinx',  # for the sphinx builder
+    'pyyaml',  # for yaml parsing
 ]
 
 install_requires = list(setup_requires)
@@ -32,6 +33,6 @@ install_requires.extend(run_requires)
 
 python_requires = ">=3.6"
 
-extras_require={
-#    ':python_version == "2.7"': ['futures'],  # for python2.7 backport of concurrent.futures
+extras_require = {
+    #    ':python_version == "2.7"': ['futures'],  # for python2.7 backport of concurrent.futures
 }
