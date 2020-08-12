@@ -38,3 +38,7 @@ class ConfigLMDB(Config):
         help_string="Which encoding to use?",
         default='utf-8',
     )
+    buffers = ParamCreator.create_bool(
+        help_string="Should we use buffers? (lmdb default is False)",
+        default=False,
+    )
