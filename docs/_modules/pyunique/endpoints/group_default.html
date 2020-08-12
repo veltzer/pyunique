@@ -35,10 +35,16 @@
 <span></span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">The default group of operations that pyunique has</span>
 <span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">os</span>
 
+<span class="kn">import</span> <span class="nn">tqdm</span>
 <span class="kn">from</span> <span class="nn">pytconf</span> <span class="kn">import</span> <span class="n">register_endpoint</span><span class="p">,</span> <span class="n">register_function_group</span>
 
 <span class="kn">import</span> <span class="nn">pyunique.version</span>
+<span class="kn">from</span> <span class="nn">pyunique.archive</span> <span class="kn">import</span> <span class="n">get_archive</span>
+<span class="kn">from</span> <span class="nn">pyunique.configs</span> <span class="kn">import</span> <span class="n">ConfigScan</span>
+<span class="kn">from</span> <span class="nn">pyunique.digest</span> <span class="kn">import</span> <span class="n">digest_file_bytes</span>
+<span class="kn">from</span> <span class="nn">pyunique.utils</span> <span class="kn">import</span> <span class="n">get_logger</span><span class="p">,</span> <span class="n">get_number_of_files</span>
 
 <span class="n">GROUP_NAME_DEFAULT</span> <span class="o">=</span> <span class="s2">&quot;default&quot;</span>
 <span class="n">GROUP_DESCRIPTION_DEFAULT</span> <span class="o">=</span> <span class="s2">&quot;all pyunique commands&quot;</span>
@@ -62,6 +68,31 @@
 <span class="sd">    Print version</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">pyunique</span><span class="o">.</span><span class="n">version</span><span class="o">.</span><span class="n">VERSION_STR</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="scan"><a class="viewcode-back" href="../../../pyunique.endpoints.html#pyunique.endpoints.group_default.scan">[docs]</a><span class="nd">@register_endpoint</span><span class="p">(</span>
+    <span class="n">group</span><span class="o">=</span><span class="n">GROUP_NAME_DEFAULT</span><span class="p">,</span>
+    <span class="n">configs</span><span class="o">=</span><span class="p">[</span><span class="n">ConfigScan</span><span class="p">],</span>
+<span class="p">)</span>
+<span class="k">def</span> <span class="nf">scan</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Scan a folder and register it&#39;s checksums</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">archive</span> <span class="o">=</span> <span class="n">get_archive</span><span class="p">()</span>
+    <span class="n">archive</span><span class="o">.</span><span class="n">start_write</span><span class="p">()</span>
+    <span class="n">logger</span> <span class="o">=</span> <span class="n">get_logger</span><span class="p">()</span>
+    <span class="n">num_files</span> <span class="o">=</span> <span class="n">get_number_of_files</span><span class="p">(</span><span class="n">folder</span><span class="o">=</span><span class="n">ConfigScan</span><span class="o">.</span><span class="n">folder</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">tqdm</span><span class="o">.</span><span class="n">tqdm</span><span class="p">(</span><span class="n">total</span><span class="o">=</span><span class="n">num_files</span><span class="p">)</span> <span class="k">as</span> <span class="n">progress_bar</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">root</span><span class="p">,</span> <span class="n">directories</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">ConfigScan</span><span class="o">.</span><span class="n">folder</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+                <span class="n">filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;doing </span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">archive</span><span class="o">.</span><span class="n">get_digest</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">filename</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">digest</span> <span class="o">=</span> <span class="n">digest_file_bytes</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">filename</span><span class="p">)</span>
+                    <span class="n">archive</span><span class="o">.</span><span class="n">add_digest</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">filename</span><span class="p">,</span> <span class="n">digest</span><span class="o">=</span><span class="n">digest</span><span class="p">)</span>
+                    <span class="n">progress_bar</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+    <span class="n">archive</span><span class="o">.</span><span class="n">end_write</span><span class="p">()</span>
+    <span class="n">archive</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
 </pre></div>
 
           </div>

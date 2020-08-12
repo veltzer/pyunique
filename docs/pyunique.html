@@ -52,9 +52,140 @@
 <div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
 </div>
+<div class="section" id="module-pyunique.archive">
+<span id="pyunique-archive-module"></span><h2>pyunique.archive module<a class="headerlink" href="#module-pyunique.archive" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="pyunique.archive.Archive">
+<em class="property">class </em><code class="sig-prename descclassname">pyunique.archive.</code><code class="sig-name descname">Archive</code><a class="reference internal" href="_modules/pyunique/archive.html#Archive"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyunique.archive.Archive" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt id="pyunique.archive.Archive.add_digest">
+<em class="property">abstract </em><code class="sig-name descname">add_digest</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filename</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">digest</span><span class="p">:</span> <span class="n">bytes</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/pyunique/archive.html#Archive.add_digest"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyunique.archive.Archive.add_digest" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pyunique.archive.Archive.close">
+<em class="property">abstract </em><code class="sig-name descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/pyunique/archive.html#Archive.close"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyunique.archive.Archive.close" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pyunique.archive.Archive.end_write">
+<em class="property">abstract </em><code class="sig-name descname">end_write</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/pyunique/archive.html#Archive.end_write"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyunique.archive.Archive.end_write" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pyunique.archive.Archive.get_digest">
+<em class="property">abstract </em><code class="sig-name descname">get_digest</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filename</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; Optional<span class="p">[</span>bytes<span class="p">]</span><a class="reference internal" href="_modules/pyunique/archive.html#Archive.get_digest"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyunique.archive.Archive.get_digest" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pyunique.archive.Archive.start_write">
+<em class="property">abstract </em><code class="sig-name descname">start_write</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/pyunique/archive.html#Archive.start_write"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyunique.archive.Archive.start_write" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="pyunique.archive.ArchiveLMDB">
+<em class="property">class </em><code class="sig-prename descclassname">pyunique.archive.</code><code class="sig-name descname">ArchiveLMDB</code><a class="reference internal" href="_modules/pyunique/archive.html#ArchiveLMDB"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyunique.archive.ArchiveLMDB" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyunique.archive.Archive" title="pyunique.archive.Archive"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyunique.archive.Archive</span></code></a></p>
+<dl class="py method">
+<dt id="pyunique.archive.ArchiveLMDB.add_digest">
+<code class="sig-name descname">add_digest</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filename</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">digest</span><span class="p">:</span> <span class="n">bytes</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/pyunique/archive.html#ArchiveLMDB.add_digest"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyunique.archive.ArchiveLMDB.add_digest" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pyunique.archive.ArchiveLMDB.close">
+<code class="sig-name descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/pyunique/archive.html#ArchiveLMDB.close"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyunique.archive.ArchiveLMDB.close" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pyunique.archive.ArchiveLMDB.end_write">
+<code class="sig-name descname">end_write</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/pyunique/archive.html#ArchiveLMDB.end_write"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyunique.archive.ArchiveLMDB.end_write" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pyunique.archive.ArchiveLMDB.get_digest">
+<code class="sig-name descname">get_digest</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filename</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; Optional<span class="p">[</span>bytes<span class="p">]</span><a class="reference internal" href="_modules/pyunique/archive.html#ArchiveLMDB.get_digest"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyunique.archive.ArchiveLMDB.get_digest" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pyunique.archive.ArchiveLMDB.start_write">
+<code class="sig-name descname">start_write</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/pyunique/archive.html#ArchiveLMDB.start_write"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyunique.archive.ArchiveLMDB.start_write" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="pyunique.archive.get_archive">
+<code class="sig-prename descclassname">pyunique.archive.</code><code class="sig-name descname">get_archive</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#pyunique.archive.Archive" title="pyunique.archive.Archive">pyunique.archive.Archive</a><a class="reference internal" href="_modules/pyunique/archive.html#get_archive"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyunique.archive.get_archive" title="Permalink to this definition">¶</a></dt>
+<dd><p>return correct archive using the currently configured algorithm
+(factory method)</p>
+</dd></dl>
+
+</div>
 <div class="section" id="module-pyunique.configs">
 <span id="pyunique-configs-module"></span><h2>pyunique.configs module<a class="headerlink" href="#module-pyunique.configs" title="Permalink to this headline">¶</a></h2>
 <p>All configurations for pyunique</p>
+<dl class="py class">
+<dt id="pyunique.configs.ConfigAlgo">
+<em class="property">class </em><code class="sig-prename descclassname">pyunique.configs.</code><code class="sig-name descname">ConfigAlgo</code><a class="reference internal" href="_modules/pyunique/configs.html#ConfigAlgo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyunique.configs.ConfigAlgo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pytconf.config.Config</span></code></p>
+<dl class="py attribute">
+<dt id="pyunique.configs.ConfigAlgo.digest">
+<code class="sig-name descname">digest</code><em class="property"> = 'sha256'</em><a class="headerlink" href="#pyunique.configs.ConfigAlgo.digest" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="pyunique.configs.ConfigLMDB">
+<em class="property">class </em><code class="sig-prename descclassname">pyunique.configs.</code><code class="sig-name descname">ConfigLMDB</code><a class="reference internal" href="_modules/pyunique/configs.html#ConfigLMDB"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyunique.configs.ConfigLMDB" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pytconf.config.Config</span></code></p>
+<dl class="py attribute">
+<dt id="pyunique.configs.ConfigLMDB.encoding">
+<code class="sig-name descname">encoding</code><em class="property"> = 'utf-8'</em><a class="headerlink" href="#pyunique.configs.ConfigLMDB.encoding" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="pyunique.configs.ConfigLMDB.map_size">
+<code class="sig-name descname">map_size</code><em class="property"> = 1000000000000</em><a class="headerlink" href="#pyunique.configs.ConfigLMDB.map_size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="pyunique.configs.ConfigScan">
+<em class="property">class </em><code class="sig-prename descclassname">pyunique.configs.</code><code class="sig-name descname">ConfigScan</code><a class="reference internal" href="_modules/pyunique/configs.html#ConfigScan"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyunique.configs.ConfigScan" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pytconf.config.Config</span></code></p>
+<dl class="py attribute">
+<dt id="pyunique.configs.ConfigScan.folder">
+<code class="sig-name descname">folder</code><em class="property"> = '.'</em><a class="headerlink" href="#pyunique.configs.ConfigScan.folder" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pyunique.digest">
+<span id="pyunique-digest-module"></span><h2>pyunique.digest module<a class="headerlink" href="#module-pyunique.digest" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="pyunique.digest.digest_file_bytes">
+<code class="sig-prename descclassname">pyunique.digest.</code><code class="sig-name descname">digest_file_bytes</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filename</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; bytes<a class="reference internal" href="_modules/pyunique/digest.html#digest_file_bytes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyunique.digest.digest_file_bytes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-pyunique.utils">
+<span id="pyunique-utils-module"></span><h2>pyunique.utils module<a class="headerlink" href="#module-pyunique.utils" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="pyunique.utils.get_logger">
+<code class="sig-prename descclassname">pyunique.utils.</code><code class="sig-name descname">get_logger</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyunique/utils.html#get_logger"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyunique.utils.get_logger" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="pyunique.utils.get_number_of_files">
+<code class="sig-prename descclassname">pyunique.utils.</code><code class="sig-name descname">get_number_of_files</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">folder</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="_modules/pyunique/utils.html#get_number_of_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyunique.utils.get_number_of_files" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </div>
 <div class="section" id="module-pyunique.version">
 <span id="pyunique-version-module"></span><h2>pyunique.version module<a class="headerlink" href="#module-pyunique.version" title="Permalink to this headline">¶</a></h2>
