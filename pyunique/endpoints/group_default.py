@@ -63,3 +63,30 @@ def scan() -> None:
                 progress_bar.update()
     archive.end_write()
     archive.close()
+
+
+@register_endpoint(
+    group=GROUP_NAME_DEFAULT,
+    configs=[
+        ConfigScan,
+        ConfigAlgo,
+        ConfigLMDB,
+    ],
+)
+def clean_db() -> None:
+    """
+    Scan the DB and remove any entries which are no longer valid
+    """
+    logger = get_logger()
+    archive = get_archive()
+    archive.start_read()
+    count = archive.count()
+    errors = 0
+    with tqdm.tqdm(total=count) as progress_bar:
+        for k, v in archive.yield_all_items():
+            if not os.path.isfile(k):
+                errors += 1
+            progress_bar.update()
+    archive.end_read()
+    archive.close()
+    logger.info(f"number of errors is {errors}")
