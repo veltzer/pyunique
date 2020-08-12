@@ -94,3 +94,34 @@ def clean_db() -> None:
     archive.end_write()
     archive.close()
     logger.info(f"number of errors is {errors}")
+
+
+@register_endpoint(
+    group=GROUP_NAME_DEFAULT,
+    configs=[
+        ConfigScan,
+        ConfigAlgo,
+        ConfigLMDB,
+    ],
+)
+def check_filenames() -> None:
+    logger = get_logger()
+    errors = 0
+    error_filenames = []
+    logger.info("Scanning for number of files...")
+    num_files = get_number_of_files(folder=ConfigScan.folder)
+    with tqdm.tqdm(total=num_files) as progress_bar:
+        for root, directories, files in os.walk(ConfigScan.folder):
+            for file in files:
+                filename = os.path.join(root, file)
+                filename = os.path.abspath(filename)
+                logger.debug(f"doing {filename}")
+                try:
+                    filename.encode(ConfigAlgo.encoding)
+                except UnicodeEncodeError:
+                    errors += 1
+                    error_filenames.append(filename)
+                progress_bar.update()
+    logger.info(f"number of errors is {errors}")
+    for error_filename in error_filenames:
+        logger.info(error_filename)

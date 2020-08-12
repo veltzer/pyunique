@@ -24,6 +24,10 @@ class ConfigAlgo(Config):
         default="sha256",
         choice_list=list(hashlib.algorithms_available),
     )
+    encoding = ParamCreator.create_str(
+        help_string="Which encoding to use?",
+        default='utf-8',
+    )
 
 
 class ConfigLMDB(Config):
@@ -33,10 +37,6 @@ class ConfigLMDB(Config):
     map_size = ParamCreator.create_int(
         help_string="Which size of mmap to use?",
         default=1000000000000,
-    )
-    encoding = ParamCreator.create_str(
-        help_string="Which encoding to use?",
-        default='utf-8',
     )
     buffers = ParamCreator.create_bool(
         help_string="Should we use buffers? (lmdb default is False)",
