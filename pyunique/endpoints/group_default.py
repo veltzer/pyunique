@@ -51,11 +51,13 @@ def scan() -> None:
     archive = get_archive()
     archive.start_write()
     logger = get_logger()
+    logger.info("Scanning for number of files...")
     num_files = get_number_of_files(folder=ConfigScan.folder)
     with tqdm.tqdm(total=num_files) as progress_bar:
         for root, directories, files in os.walk(ConfigScan.folder):
             for file in files:
                 filename = os.path.join(root, file)
+                filename = os.path.abspath(filename)
                 logger.debug(f"doing {filename}")
                 if archive.get_digest(filename=filename) is None:
                     digest = digest_file_bytes(filename=filename)
@@ -79,14 +81,16 @@ def clean_db() -> None:
     """
     logger = get_logger()
     archive = get_archive()
-    archive.start_read()
+    archive.start_write()
     count = archive.count()
     errors = 0
     with tqdm.tqdm(total=count) as progress_bar:
-        for k, v in archive.yield_all_items():
-            if not os.path.isfile(k):
+        for filename, _digest in archive.yield_all_items():
+            if not os.path.isfile(filename):
                 errors += 1
+                logger.debug(f"problem with filename {filename}")
+                archive.delete(filename=filename)
             progress_bar.update()
-    archive.end_read()
+    archive.end_write()
     archive.close()
     logger.info(f"number of errors is {errors}")

@@ -48,6 +48,10 @@ class Archive(metaclass=ABCMeta):
     def yield_all_items(self):
         pass
 
+    @abstractmethod
+    def delete(self, filename: str) -> None:
+        pass
+
 
 class ArchiveLMDB(Archive):
     def __init__(self):
@@ -99,6 +103,9 @@ class ArchiveLMDB(Archive):
         with self.txn.cursor() as curs:
             for key, value in curs:
                 yield key.decode(ConfigLMDB.encoding), value
+
+    def delete(self, filename: str) -> None:
+        self.txn.delete(key=filename)
 
 
 def get_archive() -> Archive:
