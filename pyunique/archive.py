@@ -105,7 +105,7 @@ class ArchiveLMDB(Archive):
                 yield key.decode(ConfigLMDB.encoding), value
 
     def delete(self, filename: str) -> None:
-        self.txn.delete(key=filename)
+        self.txn.delete(key=filename.encode(ConfigLMDB.encoding))
 
 
 def get_archive() -> Archive:
