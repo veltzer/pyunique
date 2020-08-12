@@ -60,6 +60,6 @@ def scan() -> None:
                 if archive.get_digest(filename=filename) is None:
                     digest = digest_file_bytes(filename=filename)
                     archive.add_digest(filename=filename, digest=digest)
-                    progress_bar.update()
+                progress_bar.update()
     archive.end_write()
     archive.close()
