@@ -4,3 +4,5 @@
     will be "."
 - do the dup command!. by default it will only work on entries which start with the current
     folder.
+- the cursor class of lmdb has a "set_range" method which we can use to query only
+    elements in a certain folder.
