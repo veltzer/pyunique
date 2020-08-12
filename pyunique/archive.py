@@ -67,7 +67,7 @@ class ArchiveLMDB(Archive):
 
     def start_read(self) -> None:
         self.txn = self.env.begin(
-            buffers=True,  # default is False, for performance
+            buffers=ConfigLMDB.buffers,
         )
 
     def end_read(self) -> None:
@@ -77,7 +77,7 @@ class ArchiveLMDB(Archive):
         # write is False by default
         self.txn = self.env.begin(
             write=True,  # default is False
-            buffers=True,  # default is False, for performance
+            buffers=ConfigLMDB.buffers,
         )
 
     def end_write(self) -> None:
