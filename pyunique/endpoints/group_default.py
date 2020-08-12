@@ -8,7 +8,7 @@ from pytconf import register_endpoint, register_function_group
 
 import pyunique.version
 from pyunique.archive import get_archive
-from pyunique.configs import ConfigScan
+from pyunique.configs import ConfigScan, ConfigAlgo, ConfigLMDB
 from pyunique.digest import digest_file_bytes
 from pyunique.utils import get_logger, get_number_of_files
 
@@ -38,7 +38,11 @@ def version() -> None:
 
 @register_endpoint(
     group=GROUP_NAME_DEFAULT,
-    configs=[ConfigScan],
+    configs=[
+        ConfigScan,
+        ConfigAlgo,
+        ConfigLMDB,
+    ],
 )
 def scan() -> None:
     """

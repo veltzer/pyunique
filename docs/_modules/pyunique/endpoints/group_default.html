@@ -42,7 +42,7 @@
 
 <span class="kn">import</span> <span class="nn">pyunique.version</span>
 <span class="kn">from</span> <span class="nn">pyunique.archive</span> <span class="kn">import</span> <span class="n">get_archive</span>
-<span class="kn">from</span> <span class="nn">pyunique.configs</span> <span class="kn">import</span> <span class="n">ConfigScan</span>
+<span class="kn">from</span> <span class="nn">pyunique.configs</span> <span class="kn">import</span> <span class="n">ConfigScan</span><span class="p">,</span> <span class="n">ConfigAlgo</span><span class="p">,</span> <span class="n">ConfigLMDB</span>
 <span class="kn">from</span> <span class="nn">pyunique.digest</span> <span class="kn">import</span> <span class="n">digest_file_bytes</span>
 <span class="kn">from</span> <span class="nn">pyunique.utils</span> <span class="kn">import</span> <span class="n">get_logger</span><span class="p">,</span> <span class="n">get_number_of_files</span>
 
@@ -72,7 +72,11 @@
 
 <div class="viewcode-block" id="scan"><a class="viewcode-back" href="../../../pyunique.endpoints.html#pyunique.endpoints.group_default.scan">[docs]</a><span class="nd">@register_endpoint</span><span class="p">(</span>
     <span class="n">group</span><span class="o">=</span><span class="n">GROUP_NAME_DEFAULT</span><span class="p">,</span>
-    <span class="n">configs</span><span class="o">=</span><span class="p">[</span><span class="n">ConfigScan</span><span class="p">],</span>
+    <span class="n">configs</span><span class="o">=</span><span class="p">[</span>
+        <span class="n">ConfigScan</span><span class="p">,</span>
+        <span class="n">ConfigAlgo</span><span class="p">,</span>
+        <span class="n">ConfigLMDB</span><span class="p">,</span>
+    <span class="p">],</span>
 <span class="p">)</span>
 <span class="k">def</span> <span class="nf">scan</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
