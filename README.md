@@ -17,8 +17,11 @@
 ![Downloads](https://pepy.tech/badge/pyunique/week)
 
 
+
 help you get rid of duplicate files
 
 project website: <https://veltzer.github.io/pyunique>
+
+chat with me at [![gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/veltzer/mark.veltzer)
 
 
