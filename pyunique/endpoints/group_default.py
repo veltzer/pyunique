@@ -6,7 +6,6 @@ import os
 import tqdm
 from pytconf import register_endpoint, register_function_group
 
-import pyunique.version
 from pyunique.archive import get_archive
 from pyunique.configs import ConfigScan, ConfigAlgo, ConfigLMDB
 from pyunique.digest import digest_file_bytes
@@ -24,16 +23,6 @@ def register_group_default():
         function_group_name=GROUP_NAME_DEFAULT,
         function_group_description=GROUP_DESCRIPTION_DEFAULT,
     )
-
-
-@register_endpoint(
-    group=GROUP_NAME_DEFAULT,
-)
-def version() -> None:
-    """
-    Print version
-    """
-    print(pyunique.version.VERSION_STR)
 
 
 @register_endpoint(

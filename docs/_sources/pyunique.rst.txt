@@ -36,18 +36,18 @@ pyunique.digest module
    :undoc-members:
    :show-inheritance:
 
-pyunique.utils module
----------------------
+pyunique.static module
+----------------------
 
-.. automodule:: pyunique.utils
+.. automodule:: pyunique.static
    :members:
    :undoc-members:
    :show-inheritance:
 
-pyunique.version module
------------------------
+pyunique.utils module
+---------------------
 
-.. automodule:: pyunique.version
+.. automodule:: pyunique.utils
    :members:
    :undoc-members:
    :show-inheritance:
