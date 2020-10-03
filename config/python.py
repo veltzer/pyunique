@@ -19,7 +19,8 @@ run_requires = [
 test_requires = [
     'pylint',  # to check for lint errors
     'pytest',  # for testing
-    'pyflakes',  # for testing
+    'pytest-cov',  # for testing
+    'flake8',  # for linting
 ]
 
 dev_requires = [

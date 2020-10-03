@@ -1,8 +1,8 @@
 """
 All configurations for pyunique
 """
-from pytconf import Config, ParamCreator
 import hashlib
+from pytconf import Config, ParamCreator
 
 
 class ConfigScan(Config):

@@ -19,6 +19,9 @@
 [![Known Vulnerabilities](https://snyk.io/test/github/veltzer/pyunique/badge.svg?targetFile=requirements.txt)](https://snyk.io/test/github/veltzer/pyunique?targetFile=requirements.txt)
 
 
+Actions
+
+![build](https://github.com/veltzer/pyunique/workflows/build/badge.svg)
 
 help you get rid of duplicate files
 
