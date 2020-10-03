@@ -21,6 +21,7 @@ test_requires = [
     'pytest',  # for testing
     'pytest-cov',  # for testing
     'flake8',  # for linting
+    'pymakehelper',  # for make
 ]
 
 dev_requires = [
