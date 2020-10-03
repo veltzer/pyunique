@@ -43,7 +43,7 @@ def scan() -> None:
     logger.info("Scanning for number of files...")
     num_files = get_number_of_files(folder=ConfigScan.folder)
     with tqdm.tqdm(total=num_files) as progress_bar:
-        for root, directories, files in os.walk(ConfigScan.folder):
+        for root, _directories, files in os.walk(ConfigScan.folder):
             for file in files:
                 filename = os.path.join(root, file)
                 filename = os.path.abspath(filename)
@@ -103,7 +103,7 @@ def check_filenames() -> None:
     logger.info("Scanning for number of files...")
     num_files = get_number_of_files(folder=ConfigScan.folder)
     with tqdm.tqdm(total=num_files) as progress_bar:
-        for root, directories, files in os.walk(ConfigScan.folder):
+        for root, _directories, files in os.walk(ConfigScan.folder):
             for file in files:
                 filename = os.path.join(root, file)
                 filename = os.path.abspath(filename)

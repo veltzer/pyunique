@@ -13,4 +13,5 @@ pyyaml
 # test requirements
 pylint
 pytest
-pyflakes
+pytest-cov
+flake8

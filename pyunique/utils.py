@@ -10,6 +10,6 @@ def get_logger():
 
 def get_number_of_files(folder: str) -> int:
     count = 0
-    for root, directories, files in os.walk(folder):
+    for _root, _directories, files in os.walk(folder):
         count += len(files)
     return count
