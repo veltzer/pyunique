@@ -12,7 +12,6 @@ setuptools.setup(
     version="0.0.8",
     packages=[
         'pyunique',
-        'pyunique.endpoints',
     ],
     # from here all is optional
     description="help you get rid of duplicate files",
@@ -57,7 +56,7 @@ setuptools.setup(
     data_files=[
     ],
     entry_points={"console_scripts": [
-        'pyunique=pyunique.endpoints.main:main',
+        'pyunique=pyunique.main:main',
     ]},
     python_requires=">=3.6",
 )

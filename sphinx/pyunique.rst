@@ -1,14 +1,6 @@
 pyunique package
 ================
 
-Subpackages
------------
-
-.. toctree::
-   :maxdepth: 4
-
-   pyunique.endpoints
-
 Submodules
 ----------
 
@@ -32,6 +24,14 @@ pyunique.digest module
 ----------------------
 
 .. automodule:: pyunique.digest
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pyunique.main module
+--------------------
+
+.. automodule:: pyunique.main
    :members:
    :undoc-members:
    :show-inheritance:
