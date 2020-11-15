@@ -3,7 +3,7 @@ import config.project
 package_name = config.project.project_name
 
 console_scripts = [
-    'pyunique=pyunique.endpoints.main:main',
+    'pyunique=pyunique.main:main',
 ]
 
 setup_requires = [

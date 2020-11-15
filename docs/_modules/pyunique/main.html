@@ -5,18 +5,18 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>pyunique.endpoints.group_default &#8212; pyunique 0.0.1 documentation</title>
-    <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/language_data.js"></script>
-    <link rel="index" title="Index" href="../../../genindex.html" />
-    <link rel="search" title="Search" href="../../../search.html" />
+    <title>pyunique.main &#8212; pyunique 0.0.1 documentation</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
    
-  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
   
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
@@ -31,36 +31,26 @@
 
           <div class="body" role="main">
             
-  <h1>Source code for pyunique.endpoints.group_default</h1><div class="highlight"><pre>
+  <h1>Source code for pyunique.main</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">The default group of operations that pyunique has</span>
+<span class="sd">main entry point to the program</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">import</span> <span class="nn">os</span>
 
+<span class="kn">import</span> <span class="nn">pylogconf.core</span>
 <span class="kn">import</span> <span class="nn">tqdm</span>
-<span class="kn">from</span> <span class="nn">pytconf</span> <span class="kn">import</span> <span class="n">register_endpoint</span><span class="p">,</span> <span class="n">register_function_group</span>
+<span class="kn">from</span> <span class="nn">pytconf</span> <span class="kn">import</span> <span class="n">register_main</span><span class="p">,</span> <span class="n">config_arg_parse_and_launch</span><span class="p">,</span> <span class="n">register_endpoint</span>
 
 <span class="kn">from</span> <span class="nn">pyunique.archive</span> <span class="kn">import</span> <span class="n">get_archive</span>
 <span class="kn">from</span> <span class="nn">pyunique.configs</span> <span class="kn">import</span> <span class="n">ConfigScan</span><span class="p">,</span> <span class="n">ConfigAlgo</span><span class="p">,</span> <span class="n">ConfigLMDB</span>
 <span class="kn">from</span> <span class="nn">pyunique.digest</span> <span class="kn">import</span> <span class="n">digest_file_bytes</span>
+<span class="kn">from</span> <span class="nn">pyunique.static</span> <span class="kn">import</span> <span class="n">VERSION_STR</span>
+
 <span class="kn">from</span> <span class="nn">pyunique.utils</span> <span class="kn">import</span> <span class="n">get_logger</span><span class="p">,</span> <span class="n">get_number_of_files</span>
 
-<span class="n">GROUP_NAME_DEFAULT</span> <span class="o">=</span> <span class="s2">&quot;default&quot;</span>
-<span class="n">GROUP_DESCRIPTION_DEFAULT</span> <span class="o">=</span> <span class="s2">&quot;all pyunique commands&quot;</span>
 
-
-<div class="viewcode-block" id="register_group_default"><a class="viewcode-back" href="../../../pyunique.endpoints.html#pyunique.endpoints.group_default.register_group_default">[docs]</a><span class="k">def</span> <span class="nf">register_group_default</span><span class="p">():</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    register the name and description of this group</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">register_function_group</span><span class="p">(</span>
-        <span class="n">function_group_name</span><span class="o">=</span><span class="n">GROUP_NAME_DEFAULT</span><span class="p">,</span>
-        <span class="n">function_group_description</span><span class="o">=</span><span class="n">GROUP_DESCRIPTION_DEFAULT</span><span class="p">,</span>
-    <span class="p">)</span></div>
-
-
-<div class="viewcode-block" id="scan"><a class="viewcode-back" href="../../../pyunique.endpoints.html#pyunique.endpoints.group_default.scan">[docs]</a><span class="nd">@register_endpoint</span><span class="p">(</span>
-    <span class="n">group</span><span class="o">=</span><span class="n">GROUP_NAME_DEFAULT</span><span class="p">,</span>
+<div class="viewcode-block" id="scan"><a class="viewcode-back" href="../../pyunique.html#pyunique.main.scan">[docs]</a><span class="nd">@register_endpoint</span><span class="p">(</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Scan a folder and register it&#39;s checksums&quot;</span><span class="p">,</span>
     <span class="n">configs</span><span class="o">=</span><span class="p">[</span>
         <span class="n">ConfigScan</span><span class="p">,</span>
         <span class="n">ConfigAlgo</span><span class="p">,</span>
@@ -68,9 +58,6 @@
     <span class="p">],</span>
 <span class="p">)</span>
 <span class="k">def</span> <span class="nf">scan</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Scan a folder and register it&#39;s checksums</span>
-<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">archive</span> <span class="o">=</span> <span class="n">get_archive</span><span class="p">()</span>
     <span class="n">archive</span><span class="o">.</span><span class="n">start_write</span><span class="p">()</span>
     <span class="n">logger</span> <span class="o">=</span> <span class="n">get_logger</span><span class="p">()</span>
@@ -90,8 +77,8 @@
     <span class="n">archive</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
 
 
-<div class="viewcode-block" id="clean_db"><a class="viewcode-back" href="../../../pyunique.endpoints.html#pyunique.endpoints.group_default.clean_db">[docs]</a><span class="nd">@register_endpoint</span><span class="p">(</span>
-    <span class="n">group</span><span class="o">=</span><span class="n">GROUP_NAME_DEFAULT</span><span class="p">,</span>
+<div class="viewcode-block" id="clean_db"><a class="viewcode-back" href="../../pyunique.html#pyunique.main.clean_db">[docs]</a><span class="nd">@register_endpoint</span><span class="p">(</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Scan the DB and remove any entries which are no longer valid&quot;</span><span class="p">,</span>
     <span class="n">configs</span><span class="o">=</span><span class="p">[</span>
         <span class="n">ConfigScan</span><span class="p">,</span>
         <span class="n">ConfigAlgo</span><span class="p">,</span>
@@ -99,9 +86,6 @@
     <span class="p">],</span>
 <span class="p">)</span>
 <span class="k">def</span> <span class="nf">clean_db</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Scan the DB and remove any entries which are no longer valid</span>
-<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">logger</span> <span class="o">=</span> <span class="n">get_logger</span><span class="p">()</span>
     <span class="n">archive</span> <span class="o">=</span> <span class="n">get_archive</span><span class="p">()</span>
     <span class="n">archive</span><span class="o">.</span><span class="n">start_write</span><span class="p">()</span>
@@ -119,8 +103,8 @@
     <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;number of errors is </span><span class="si">{</span><span class="n">errors</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="check_filenames"><a class="viewcode-back" href="../../../pyunique.endpoints.html#pyunique.endpoints.group_default.check_filenames">[docs]</a><span class="nd">@register_endpoint</span><span class="p">(</span>
-    <span class="n">group</span><span class="o">=</span><span class="n">GROUP_NAME_DEFAULT</span><span class="p">,</span>
+<div class="viewcode-block" id="check_filenames"><a class="viewcode-back" href="../../pyunique.html#pyunique.main.check_filenames">[docs]</a><span class="nd">@register_endpoint</span><span class="p">(</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Check filenames in a certain folder&quot;</span><span class="p">,</span>
     <span class="n">configs</span><span class="o">=</span><span class="p">[</span>
         <span class="n">ConfigScan</span><span class="p">,</span>
         <span class="n">ConfigAlgo</span><span class="p">,</span>
@@ -128,9 +112,6 @@
     <span class="p">],</span>
 <span class="p">)</span>
 <span class="k">def</span> <span class="nf">check_filenames</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Check filenames in a certain folder</span>
-<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">logger</span> <span class="o">=</span> <span class="n">get_logger</span><span class="p">()</span>
     <span class="n">errors</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">error_filenames</span> <span class="o">=</span> <span class="p">[]</span>
@@ -151,6 +132,20 @@
     <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;number of errors is </span><span class="si">{</span><span class="n">errors</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">error_filename</span> <span class="ow">in</span> <span class="n">error_filenames</span><span class="p">:</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">error_filename</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="main"><a class="viewcode-back" href="../../pyunique.html#pyunique.main.main">[docs]</a><span class="nd">@register_main</span><span class="p">(</span>
+    <span class="n">main_description</span><span class="o">=</span><span class="s2">&quot;pyunique will help you remove duplicate files&quot;</span><span class="p">,</span>
+    <span class="n">app_name</span><span class="o">=</span><span class="s2">&quot;pyunique&quot;</span><span class="p">,</span>
+    <span class="n">version</span><span class="o">=</span><span class="n">VERSION_STR</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">pylogconf</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">setup</span><span class="p">()</span>
+    <span class="n">config_arg_parse_and_launch</span><span class="p">()</span></div>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
 </pre></div>
 
           </div>
@@ -161,8 +156,8 @@
         <div class="sphinxsidebarwrapper"><div class="relations">
 <h3>Related Topics</h3>
 <ul>
-  <li><a href="../../../index.html">Documentation overview</a><ul>
-  <li><a href="../../index.html">Module code</a><ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">Module code</a><ul>
   </ul></li>
   </ul></li>
 </ul>
@@ -170,7 +165,7 @@
 <div id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
-    <form class="search" action="../../../search.html" method="get">
+    <form class="search" action="../../search.html" method="get">
       <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
     </form>

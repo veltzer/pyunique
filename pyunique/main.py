@@ -1,32 +1,22 @@
 """
-The default group of operations that pyunique has
+main entry point to the program
 """
 import os
 
+import pylogconf.core
 import tqdm
-from pytconf import register_endpoint, register_function_group
+from pytconf import register_main, config_arg_parse_and_launch, register_endpoint
 
 from pyunique.archive import get_archive
 from pyunique.configs import ConfigScan, ConfigAlgo, ConfigLMDB
 from pyunique.digest import digest_file_bytes
+from pyunique.static import VERSION_STR
+
 from pyunique.utils import get_logger, get_number_of_files
-
-GROUP_NAME_DEFAULT = "default"
-GROUP_DESCRIPTION_DEFAULT = "all pyunique commands"
-
-
-def register_group_default():
-    """
-    register the name and description of this group
-    """
-    register_function_group(
-        function_group_name=GROUP_NAME_DEFAULT,
-        function_group_description=GROUP_DESCRIPTION_DEFAULT,
-    )
 
 
 @register_endpoint(
-    group=GROUP_NAME_DEFAULT,
+    description="Scan a folder and register it's checksums",
     configs=[
         ConfigScan,
         ConfigAlgo,
@@ -34,9 +24,6 @@ def register_group_default():
     ],
 )
 def scan() -> None:
-    """
-    Scan a folder and register it's checksums
-    """
     archive = get_archive()
     archive.start_write()
     logger = get_logger()
@@ -57,7 +44,7 @@ def scan() -> None:
 
 
 @register_endpoint(
-    group=GROUP_NAME_DEFAULT,
+    description="Scan the DB and remove any entries which are no longer valid",
     configs=[
         ConfigScan,
         ConfigAlgo,
@@ -65,9 +52,6 @@ def scan() -> None:
     ],
 )
 def clean_db() -> None:
-    """
-    Scan the DB and remove any entries which are no longer valid
-    """
     logger = get_logger()
     archive = get_archive()
     archive.start_write()
@@ -86,7 +70,7 @@ def clean_db() -> None:
 
 
 @register_endpoint(
-    group=GROUP_NAME_DEFAULT,
+    description="Check filenames in a certain folder",
     configs=[
         ConfigScan,
         ConfigAlgo,
@@ -94,9 +78,6 @@ def clean_db() -> None:
     ],
 )
 def check_filenames() -> None:
-    """
-    Check filenames in a certain folder
-    """
     logger = get_logger()
     errors = 0
     error_filenames = []
@@ -117,3 +98,17 @@ def check_filenames() -> None:
     logger.info(f"number of errors is {errors}")
     for error_filename in error_filenames:
         logger.info(error_filename)
+
+
+@register_main(
+    main_description="pyunique will help you remove duplicate files",
+    app_name="pyunique",
+    version=VERSION_STR,
+)
+def main():
+    pylogconf.core.setup()
+    config_arg_parse_and_launch()
+
+
+if __name__ == '__main__':
+    main()
