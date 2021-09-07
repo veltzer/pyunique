@@ -14,7 +14,6 @@
 ![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)
 
 ![build](https://github.com/veltzer/pyunique/workflows/build/badge.svg)
-
 help you get rid of duplicate files
 
 project website: https://veltzer.github.io/pyunique
