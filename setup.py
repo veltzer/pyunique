@@ -32,14 +32,6 @@ setuptools.setup(
     platforms=[
         'python3',
     ],
-    install_requires=[
-        'pytconf',
-        'pylogconf',
-        'tqdm',
-        'lmdb',
-    ],
-    extras_require={
-    },
     classifiers=[
         'Development Status :: 4 - Beta',
         'Environment :: Console',
