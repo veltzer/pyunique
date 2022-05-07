@@ -6,7 +6,7 @@ console_scripts = [
     "pyunique=pyunique.main:main",
 ]
 
-run_requires = [
+install_requires = [
     "pytconf",
     "pylogconf",
     "tqdm",
