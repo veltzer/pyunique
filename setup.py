@@ -32,6 +32,12 @@ setuptools.setup(
     platforms=[
         'python3',
     ],
+    install_requires=[
+        'pytconf',
+        'pylogconf',
+        'tqdm',
+        'lmdb',
+    ],
     classifiers=[
         'Development Status :: 4 - Beta',
         'Environment :: Console',
@@ -48,5 +54,5 @@ setuptools.setup(
     entry_points={"console_scripts": [
         'pyunique=pyunique.main:main',
     ]},
-    python_requires=">=3.9",
+    python_requires=">=3.10",
 )
