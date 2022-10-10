@@ -1,12 +1,17 @@
 console_scripts = [
     "pyunique=pyunique.main:main",
 ]
+config_requires = [
+    "pyyaml",
+]
 dev_requires = [
-    "pyclassifiers",
     "pypitools",
+]
+make_requires = [
+    "pyclassifiers",
     "pydmt",
     "Sphinx",
-    "pyyaml",
+    "pymakehelper",
 ]
 install_requires = [
     "pytconf",
@@ -19,6 +24,5 @@ test_requires = [
     "pytest",
     "pytest-cov",
     "flake8",
-    "pymakehelper",
     "mypy",
 ]
