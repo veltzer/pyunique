@@ -42,7 +42,7 @@
 <span class="kn">from</span> <span class="nn">pyunique.archive</span> <span class="kn">import</span> <span class="n">get_archive</span>
 <span class="kn">from</span> <span class="nn">pyunique.configs</span> <span class="kn">import</span> <span class="n">ConfigScan</span><span class="p">,</span> <span class="n">ConfigAlgo</span><span class="p">,</span> <span class="n">ConfigLMDB</span>
 <span class="kn">from</span> <span class="nn">pyunique.digest</span> <span class="kn">import</span> <span class="n">digest_file_bytes</span>
-<span class="kn">from</span> <span class="nn">pyunique.static</span> <span class="kn">import</span> <span class="n">VERSION_STR</span>
+<span class="kn">from</span> <span class="nn">pyunique.static</span> <span class="kn">import</span> <span class="n">VERSION_STR</span><span class="p">,</span> <span class="n">APP_NAME</span><span class="p">,</span> <span class="n">DESCRIPTION</span>
 
 <span class="kn">from</span> <span class="nn">pyunique.utils</span> <span class="kn">import</span> <span class="n">get_logger</span><span class="p">,</span> <span class="n">get_number_of_files</span>
 
@@ -133,8 +133,8 @@
 
 
 <div class="viewcode-block" id="main"><a class="viewcode-back" href="../../pyunique.html#pyunique.main.main">[docs]</a><span class="nd">@register_main</span><span class="p">(</span>
-    <span class="n">main_description</span><span class="o">=</span><span class="s2">&quot;pyunique will help you remove duplicate files&quot;</span><span class="p">,</span>
-    <span class="n">app_name</span><span class="o">=</span><span class="s2">&quot;pyunique&quot;</span><span class="p">,</span>
+    <span class="n">main_description</span><span class="o">=</span><span class="n">DESCRIPTION</span><span class="p">,</span>
+    <span class="n">app_name</span><span class="o">=</span><span class="n">APP_NAME</span><span class="p">,</span>
     <span class="n">version</span><span class="o">=</span><span class="n">VERSION_STR</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>

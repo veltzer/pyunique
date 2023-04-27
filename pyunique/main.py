@@ -10,7 +10,7 @@ from pytconf import register_main, config_arg_parse_and_launch, register_endpoin
 from pyunique.archive import get_archive
 from pyunique.configs import ConfigScan, ConfigAlgo, ConfigLMDB
 from pyunique.digest import digest_file_bytes
-from pyunique.static import VERSION_STR
+from pyunique.static import VERSION_STR, APP_NAME, DESCRIPTION
 
 from pyunique.utils import get_logger, get_number_of_files
 
@@ -101,8 +101,8 @@ def check_filenames() -> None:
 
 
 @register_main(
-    main_description="pyunique will help you remove duplicate files",
-    app_name="pyunique",
+    main_description=DESCRIPTION,
+    app_name=APP_NAME,
     version=VERSION_STR,
 )
 def main():

@@ -9,12 +9,12 @@ def get_readme():
 setuptools.setup(
     # the first three fields are a must according to the documentation
     name="pyunique",
-    version="0.0.9",
+    version="0.0.10",
     packages=[
         "pyunique",
     ],
     # from here all is optional
-    description="help you get rid of duplicate files",
+    description="Pyunique helps you get rid of duplicate files",
     long_description=get_readme(),
     long_description_content_type="text/x-rst",
     author="Mark Veltzer",
