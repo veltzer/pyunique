@@ -1,4 +1,4 @@
-description_short = "help you get rid of duplicate files"
+description_short = "Pyunique helps you get rid of duplicate files"
 keywords = [
     "duplicates",
     "remove",
