@@ -12,6 +12,7 @@ make_requires = [
     "pydmt",
     "sphinx",
     "pymakehelper",
+    "types-tqdm",
 ]
 install_requires = [
     "pytconf",
