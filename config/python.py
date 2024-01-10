@@ -4,11 +4,11 @@ from typing import List
 console_scripts: List[str] = [
     "pyunique=pyunique.main:main",
 ]
-config_requires: List[str] = [
-    "pyyaml",
-]
 dev_requires: List[str] = [
     "pypitools",
+]
+config_requires: List[str] = [
+    "pyclassifiers",
 ]
 install_requires: List[str] = [
     "pytconf",
@@ -17,9 +17,7 @@ install_requires: List[str] = [
     "lmdb",
 ]
 make_requires: List[str] = [
-    "pyclassifiers",
     "pydmt",
-    "sphinx",
     "pymakehelper",
     "types-tqdm",
 ]
