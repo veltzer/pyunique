@@ -16,7 +16,7 @@ install_requires: List[str] = [
     "tqdm",
     "lmdb",
 ]
-make_requires: List[str] = [
+build_requires: List[str] = [
     "pydmt",
     "pymakehelper",
     "types-tqdm",
@@ -28,4 +28,4 @@ test_requires: List[str] = [
     "flake8",
     "mypy",
 ]
-requires = config_requires + install_requires + make_requires + test_requires
+requires = config_requires + install_requires + build_requires + test_requires
