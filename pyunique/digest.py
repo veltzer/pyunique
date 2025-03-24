@@ -1,3 +1,7 @@
+"""
+digest utilities
+"""
+
 import hashlib
 
 from pyunique.configs import ConfigAlgo
