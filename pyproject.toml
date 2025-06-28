@@ -1,0 +1,55 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "pyunique"
+version = "0.0.11"
+requires-python = ">=3.12"
+authors = [
+	{ name = "Mark Veltzer", email = "mark.veltzer@gmail.com" }
+]
+maintainers = [
+	{ name = "Mark Veltzer", email = "mark.veltzer@gmail.com" }
+]
+description = "Pyunique helps you get rid of duplicate files"
+readme = "README.md"
+license = "MIT"
+keywords=[
+    "duplicates",
+    "remove",
+    "hash",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Utilities",
+    "License :: OSI Approved :: MIT License",
+]
+dependencies = [
+    "pytconf",
+    "pylogconf",
+    "tqdm",
+    "lmdb",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/veltzer/pyunique"
+"Bug Tracker" = "https://github.com/veltzer/pyunique/issues"
+"Documentation" = "https://veltzer.github.io/pyunique"
+"Download" = "https://pypi.org/project/pyunique/"
+"Repository" = "https://github.com/veltzer/pyunique"
+
+[project.scripts]
+pyunique = "pyunique.main:main"
+
+[tool.ruff]
+line-length = 130
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
