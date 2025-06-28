@@ -21,7 +21,7 @@ class Archive(metaclass=ABCMeta):
         pass
 
     @abstractmethod
-    def get_digest(self, filename: str) -> Union[bytes, None]:
+    def get_digest(self, filename: str) -> bytes | None:
         pass
 
     @abstractmethod
@@ -91,7 +91,7 @@ class ArchiveLMDB(Archive):
     def end_write(self) -> None:
         self.txn.commit()
 
-    def get_digest(self, filename: str) -> Union[bytes, None]:
+    def get_digest(self, filename: str) -> bytes | None:
         return self.txn.get(key=filename.encode(ConfigAlgo.encoding))
 
     def add_digest(self, filename: str, digest: bytes) -> None:
