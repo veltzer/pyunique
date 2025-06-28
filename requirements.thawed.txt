@@ -8,6 +8,6 @@ pylogconf
 pymakehelper
 pytconf
 pytest
-pytest-cov
+ruff
 tqdm
 types-tqdm
