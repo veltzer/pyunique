@@ -1,14 +1,13 @@
 # THIS IS AN AUTO-GENERATED FILE. DO NOT EDIT!
-pyclassifiers
-pytconf
-pylogconf
-tqdm
 lmdb
+mypy
+pyclassifiers
 pydmt
-pymakehelper
-types-tqdm
 pylint
+pylogconf
+pymakehelper
+pytconf
 pytest
 pytest-cov
-flake8
-mypy
+tqdm
+types-tqdm
