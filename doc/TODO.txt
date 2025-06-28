@@ -1,3 +1,4 @@
+- add a "diff" command to show the diff in multiple repositories.
 - add command to list all entries in the db with a folder filter which by default
     will be "."
 - add command to delete all entries in the db with a folder prefix which by default
