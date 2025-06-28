@@ -4,7 +4,6 @@ archive
 
 import os
 from abc import ABCMeta, abstractmethod
-from typing import Union
 
 import lmdb
 
