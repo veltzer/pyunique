@@ -14,15 +14,17 @@ install_requires: list[str] = [
     "lmdb",
 ]
 build_requires: list[str] = [
+    "hatch",
     "pydmt",
     "pymakehelper",
-    # types
-    "types-tqdm",
+    "pycmdtools",
 ]
 test_requires: list[str] = [
     "pylint",
     "pytest",
     "mypy",
     "ruff",
+    # types
+    "types-tqdm",
 ]
 requires = config_requires + install_requires + build_requires + test_requires
