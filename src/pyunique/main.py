@@ -16,7 +16,7 @@ from pyunique.utils import get_logger, get_number_of_files
 
 
 @register_endpoint(
-    description="Scan a folder and register it's checksums",
+    description="Scan a folder and register its checksums",
     configs=[
         ConfigScan,
         ConfigAlgo,
@@ -110,5 +110,5 @@ def main():
     config_arg_parse_and_launch()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
