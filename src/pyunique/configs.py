@@ -26,7 +26,7 @@ class ConfigAlgo(Config):
     )
     encoding = ParamCreator.create_str(
         help_string="Which encoding to use?",
-        default='utf-8',
+        default="utf-8",
     )
 
 
