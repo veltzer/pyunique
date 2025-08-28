@@ -7,7 +7,7 @@ extensions = [
 import os
 import sys
 
-# Add the project "src" directory to the Python path.
+# Add the projects "src" directory to the Python path.
 # This allows Sphinx to find and import your package.
 sys.path.insert(0, os.path.abspath("../src"))
 sys.path.insert(0, os.path.abspath(".."))
