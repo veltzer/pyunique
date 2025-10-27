@@ -9,53 +9,53 @@ pyunique.archive module
 
 .. automodule:: pyunique.archive
    :members:
-   :show-inheritance:
    :undoc-members:
+   :show-inheritance:
 
 pyunique.configs module
 -----------------------
 
 .. automodule:: pyunique.configs
    :members:
-   :show-inheritance:
    :undoc-members:
+   :show-inheritance:
 
 pyunique.digest module
 ----------------------
 
 .. automodule:: pyunique.digest
    :members:
-   :show-inheritance:
    :undoc-members:
+   :show-inheritance:
 
 pyunique.main module
 --------------------
 
 .. automodule:: pyunique.main
    :members:
-   :show-inheritance:
    :undoc-members:
+   :show-inheritance:
 
 pyunique.static module
 ----------------------
 
 .. automodule:: pyunique.static
    :members:
-   :show-inheritance:
    :undoc-members:
+   :show-inheritance:
 
 pyunique.utils module
 ---------------------
 
 .. automodule:: pyunique.utils
    :members:
-   :show-inheritance:
    :undoc-members:
+   :show-inheritance:
 
 Module contents
 ---------------
 
 .. automodule:: pyunique
    :members:
-   :show-inheritance:
    :undoc-members:
+   :show-inheritance:
