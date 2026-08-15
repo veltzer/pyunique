@@ -2,6 +2,7 @@
 All configurations for pyunique
 """
 import hashlib
+
 from pytconf import Config, ParamCreator
 
 
