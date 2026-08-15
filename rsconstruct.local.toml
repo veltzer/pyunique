@@ -17,4 +17,5 @@ pip = [
     "pylogconf",
     "tqdm",
     "lmdb",
+    "types-tqdm",
 ]
