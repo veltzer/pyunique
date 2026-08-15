@@ -5,13 +5,12 @@ import os
 
 import pylogconf.core
 import tqdm
-from pytconf import register_main, config_arg_parse_and_launch, register_endpoint
+from pytconf import config_arg_parse_and_launch, register_endpoint, register_main
 
 from pyunique.archive import get_archive
-from pyunique.configs import ConfigScan, ConfigAlgo, ConfigLMDB
+from pyunique.configs import ConfigAlgo, ConfigLMDB, ConfigScan
 from pyunique.digest import digest_file_bytes
-from pyunique.static import VERSION_STR, APP_NAME, DESCRIPTION
-
+from pyunique.static import APP_NAME, DESCRIPTION, VERSION_STR
 from pyunique.utils import get_logger, get_number_of_files
 
 

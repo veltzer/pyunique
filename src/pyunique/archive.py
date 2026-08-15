@@ -7,7 +7,7 @@ from abc import ABCMeta, abstractmethod
 
 import lmdb
 
-from pyunique.configs import ConfigLMDB, ConfigAlgo
+from pyunique.configs import ConfigAlgo, ConfigLMDB
 
 
 class Archive(metaclass=ABCMeta):
