@@ -5,3 +5,4 @@ KEYWORDS = {
     "remove",
     "hash",
 }
+PYPI = true
