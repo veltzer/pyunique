@@ -70,7 +70,8 @@ class ArchiveLMDB(Archive):
         self.txn = None
 
     def count(self) -> int:
-        return self.env.stat()["entries"]
+        entries: int = self.env.stat()["entries"]
+        return entries
 
     def start_read(self) -> None:
         self.txn = self.env.begin(
@@ -91,7 +92,8 @@ class ArchiveLMDB(Archive):
         self.txn.commit()
 
     def get_digest(self, filename: str) -> bytes | None:
-        return self.txn.get(key=filename.encode(ConfigAlgo.encoding))
+        digest: bytes | None = self.txn.get(key=filename.encode(ConfigAlgo.encoding))
+        return digest
 
     def add_digest(self, filename: str, digest: bytes) -> None:
         self.txn.put(
