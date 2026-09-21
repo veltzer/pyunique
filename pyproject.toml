@@ -99,7 +99,6 @@ prerelease = "disallow"
 [dependency-groups]
 dev = [
     "mypy",
-    "pylint",
     "pytest",
     "ruff",
     "sphinx",
