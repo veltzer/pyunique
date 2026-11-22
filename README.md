@@ -5,7 +5,7 @@
 
 description: Pyunique helps you get rid of duplicate files
 
-project website: https://veltzer.github.io/pyunique
+project website: <https://veltzer.github.io/pyunique>
 
 author: Mark Veltzer
 
