@@ -33,7 +33,7 @@ def scan() -> None:
             for file in files:
                 filename = os.path.join(root, file)
                 filename = os.path.abspath(filename)
-                logger.debug(f"doing {filename}")
+                logger.debug("doing %s", filename)
                 if archive.get_digest(filename=filename) is None:
                     digest = digest_file_bytes(filename=filename)
                     archive.add_digest(filename=filename, digest=digest)
@@ -60,12 +60,12 @@ def clean_db() -> None:
         for filename, _digest in archive.yield_all_items():
             if not os.path.isfile(filename):
                 errors += 1
-                logger.debug(f"problem with filename {filename}")
+                logger.debug("problem with filename %s", filename)
                 archive.delete(filename=filename)
             progress_bar.update()
     archive.end_write()
     archive.close()
-    logger.info(f"number of errors is {errors}")
+    logger.info("number of errors is %s", errors)
 
 
 @register_endpoint(
@@ -87,14 +87,14 @@ def check_filenames() -> None:
             for file in files:
                 filename = os.path.join(root, file)
                 filename = os.path.abspath(filename)
-                logger.debug(f"doing {filename}")
+                logger.debug("doing %s", filename)
                 try:
                     filename.encode(ConfigAlgo.encoding)
                 except UnicodeEncodeError:
                     errors += 1
                     error_filenames.append(filename)
                 progress_bar.update()
-    logger.info(f"number of errors is {errors}")
+    logger.info("number of errors is %s", errors)
     for error_filename in error_filenames:
         logger.info(error_filename)
 

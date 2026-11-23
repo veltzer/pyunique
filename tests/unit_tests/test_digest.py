@@ -18,7 +18,7 @@ class DigestTests(unittest.TestCase):
         try:
             got = digest.digest_file_bytes(name)
             want = hashlib.new(ConfigAlgo.digest, data).digest()
-            self.assertEqual(got, want)
+            assert got == want
         finally:
             os.unlink(name)
 
@@ -28,7 +28,7 @@ class DigestTests(unittest.TestCase):
         try:
             got = digest.digest_file_bytes(name)
             want = hashlib.new(ConfigAlgo.digest, b"").digest()
-            self.assertEqual(got, want)
+            assert got == want
         finally:
             os.unlink(name)
 
@@ -40,7 +40,7 @@ class DigestTests(unittest.TestCase):
                 with tempfile.NamedTemporaryFile(delete=False) as fh:
                     fh.write(payload)
                     names.append(fh.name)
-            self.assertEqual(digest.digest_file_bytes(names[0]), digest.digest_file_bytes(names[1]))
+            assert digest.digest_file_bytes(names[0]) == digest.digest_file_bytes(names[1])
         finally:
             for n in names:
                 os.unlink(n)
@@ -59,8 +59,8 @@ class FileCountTests(unittest.TestCase):
             os.mkdir(sub)
             self._touch(os.path.join(sub, "b"))
             self._touch(os.path.join(sub, "c"))
-            self.assertEqual(utils.get_number_of_files(d), 3)
+            assert utils.get_number_of_files(d) == 3
 
     def test_empty_folder_is_zero(self):
         with tempfile.TemporaryDirectory() as d:
-            self.assertEqual(utils.get_number_of_files(d), 0)
+            assert utils.get_number_of_files(d) == 0
