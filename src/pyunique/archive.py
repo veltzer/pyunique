@@ -4,6 +4,7 @@ archive
 
 import os
 from abc import ABCMeta, abstractmethod
+from collections.abc import Iterator
 
 import lmdb
 
@@ -11,10 +12,6 @@ from pyunique.configs import ConfigAlgo, ConfigLMDB
 
 
 class Archive(metaclass=ABCMeta):
-    @abstractmethod
-    def __init__(self):
-        pass
-
     @abstractmethod
     def count(self) -> int:
         pass
@@ -48,7 +45,7 @@ class Archive(metaclass=ABCMeta):
         pass
 
     @abstractmethod
-    def yield_all_items(self):
+    def yield_all_items(self) -> Iterator[tuple[str, bytes]]:
         pass
 
     @abstractmethod
@@ -58,7 +55,6 @@ class Archive(metaclass=ABCMeta):
 
 class ArchiveLMDB(Archive):
     def __init__(self):
-        super().__init__()
         filename = os.path.expanduser("~/.config/pyunique.lmdb")
         self.env = lmdb.open(
             path=filename,
@@ -67,7 +63,12 @@ class ArchiveLMDB(Archive):
             writemap=True,  # default is False, for performance
             # lock=True,  # this is the default
         )
-        self.txn = None
+        self.txn: lmdb.Transaction | None = None
+
+    def _get_txn(self) -> lmdb.Transaction:
+        if self.txn is None:
+            raise RuntimeError("no transaction: call start_read or start_write first")
+        return self.txn
 
     def count(self) -> int:
         entries: int = self.env.stat()["entries"]
@@ -79,7 +80,7 @@ class ArchiveLMDB(Archive):
         )
 
     def end_read(self) -> None:
-        self.txn.commit()
+        self._get_txn().commit()
 
     def start_write(self) -> None:
         # write is False by default
@@ -89,14 +90,16 @@ class ArchiveLMDB(Archive):
         )
 
     def end_write(self) -> None:
-        self.txn.commit()
+        self._get_txn().commit()
 
     def get_digest(self, filename: str) -> bytes | None:
-        digest: bytes | None = self.txn.get(key=filename.encode(ConfigAlgo.encoding))
-        return digest
+        digest = self._get_txn().get(key=filename.encode(ConfigAlgo.encoding))
+        if digest is None:
+            return None
+        return bytes(digest)
 
     def add_digest(self, filename: str, digest: bytes) -> None:
-        self.txn.put(
+        self._get_txn().put(
             key=filename.encode(ConfigAlgo.encoding),
             value=digest,
         )
@@ -104,13 +107,13 @@ class ArchiveLMDB(Archive):
     def close(self) -> None:
         self.env.close()
 
-    def yield_all_items(self):
-        with self.txn.cursor() as curs:
+    def yield_all_items(self) -> Iterator[tuple[str, bytes]]:
+        with self._get_txn().cursor() as curs:
             for key, value in curs:
-                yield key.decode(ConfigAlgo.encoding), value
+                yield bytes(key).decode(ConfigAlgo.encoding), bytes(value)
 
     def delete(self, filename: str) -> None:
-        self.txn.delete(key=filename.encode(ConfigAlgo.encoding))
+        self._get_txn().delete(key=filename.encode(ConfigAlgo.encoding))
 
 
 def get_archive() -> Archive:
