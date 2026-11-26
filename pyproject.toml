@@ -85,13 +85,6 @@ search-path = [
     "src",
     ".",
 ]
-# Third-party libraries without type information.
-ignore-missing-imports = [
-    "lmdb.*",
-    "pylogconf.*",
-    "pytconf.*",
-    "tqdm.*",
-]
 
 [tool.pyrefly.errors]
 no-any-return = "error"
