@@ -4,11 +4,14 @@ archive
 
 import os
 from abc import ABCMeta, abstractmethod
-from collections.abc import Iterator
+from typing import TYPE_CHECKING
 
 import lmdb
 
 from pyunique.configs import ConfigAlgo, ConfigLMDB
+
+if TYPE_CHECKING:
+    from collections.abc import Iterator
 
 
 class Archive(metaclass=ABCMeta):
