@@ -64,7 +64,6 @@ class ArchiveLMDB(Archive):
             map_size=ConfigLMDB.map_size,
             subdir=False,  # default is True, for just one file
             writemap=True,  # default is False, for performance
-            # lock=True,  # this is the default
         )
         self.txn: lmdb.Transaction | None = None
 
